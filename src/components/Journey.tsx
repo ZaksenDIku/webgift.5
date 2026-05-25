@@ -106,7 +106,7 @@ export function Journey() {
     <section id="journey" className="relative px-6 py-32">
       <SectionTitle eyebrow="01" title={t("journey.title")} sub={t("journey.sub")} />
       <div className="relative mx-auto max-w-5xl">
-        <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-gold/40 to-transparent md:block" />
+        <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-purple/30 to-transparent md:block" />
         <div className="space-y-24">
           {chapters.map((c, i) => (
             <ChapterCard key={c.key} idx={i} chapter={c} />

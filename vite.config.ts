@@ -9,9 +9,7 @@ import tsConfigPaths from "vite-tsconfig-paths";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-// @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   server: {
     host: "::",
     port: 8080,
@@ -27,14 +25,20 @@ export default defineConfig({
       },
     }),
     react(),
-    !process.env.VERCEL && cloudflare(),
+    // Redirect TanStack Start's bundled server entry to src/server.ts for Cloudflare builds.
+    // The Cloudflare dev optimizer bundles before TanStack's virtual imports are available.
+    command === "build" && !process.env.VERCEL && cloudflare(),
   ].filter(Boolean),
   optimizeDeps: {
-    exclude: ["cloudflare:workers"],
+    exclude: [
+      "cloudflare:workers",
+      "@tanstack/react-start/server-entry",
+      "@tanstack/start-server-core",
+    ],
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-});
+}));

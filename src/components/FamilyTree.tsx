@@ -4,7 +4,6 @@ import { useI18n, dict } from "@/lib/i18n";
 import { siteImages } from "@/lib/site-images";
 import { SectionTitle } from "./SectionTitle";
 import { Upload } from "lucide-react";
-import fatherFallback from "@/assets/father-hero.jpg";
 
 const children = [
   { key: "amal", age: 43 },
@@ -26,15 +25,15 @@ function FatherCard() {
       transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col items-center gap-3 text-center"
     >
-      <div className="relative h-40 w-40 overflow-hidden rounded-full border border-gold/60 ring-gold sm:h-48 sm:w-48">
+      <div className="relative h-40 w-40 overflow-hidden rounded-full border-2 border-purple/60 shadow-glow sm:h-48 sm:w-48">
         <img
           src={father}
           alt=""
           className="h-full w-full object-cover"
-          onError={() => setFather(fatherFallback)}
+          onError={() => setFather("https://via.placeholder.com/1536")}
         />
       </div>
-      <div className={`text-lg italic text-gold sm:text-xl ${lang === "ar" ? "font-arabic not-italic font-medium" : "font-display"}`}>
+      <div className={`text-lg italic text-purple sm:text-xl ${lang === "ar" ? "font-arabic not-italic font-medium" : "font-display"}`}>
         {t("hero.name")}
       </div>
       <div className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground">{t("family.father")}</div>

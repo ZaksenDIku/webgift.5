@@ -7,10 +7,11 @@ export function SectionTitle({ eyebrow, title, sub }: { eyebrow?: string; title:
     <div className="mx-auto mb-16 max-w-2xl text-center">
       {eyebrow && (
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-4 text-xs uppercase tracking-[0.4em] text-gold/80"
+          transition={{ duration: 0.8 }}
+          className="mb-4 text-xs uppercase tracking-[0.4em] text-purple/80 font-semibold"
         >
           {eyebrow}
         </motion.div>
@@ -24,12 +25,12 @@ export function SectionTitle({ eyebrow, title, sub }: { eyebrow?: string; title:
           lang === "ar" ? "font-arabic font-medium" : "font-display font-light italic"
         }`}
       >
-        <span className="gradient-gold-text">{title}</span>
+        <span className="bg-gradient-to-r from-purple via-rose to-gold bg-clip-text text-transparent">{title}</span>
       </motion.h2>
       {sub && (
         <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 1 }}
           className={`mt-5 text-muted-foreground ${lang === "ar" ? "font-arabic text-lg" : ""}`}
@@ -37,7 +38,7 @@ export function SectionTitle({ eyebrow, title, sub }: { eyebrow?: string; title:
           {sub}
         </motion.p>
       )}
-      <div className="mx-auto mt-8 h-px w-16 bg-gradient-to-r from-transparent via-[oklch(0.82_0.14_82)] to-transparent" />
+      <div className="mx-auto mt-8 h-1 w-20 bg-gradient-to-r from-transparent via-purple to-rose rounded-full opacity-60" />
     </div>
   );
 }
