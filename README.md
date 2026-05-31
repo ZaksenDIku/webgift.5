@@ -6,4 +6,4 @@ Ideen er at gøre det nemt at give en personlig webbaseret gave, som kan deles o
 
 Denne version holder fokus på en enkel og personlig gaveoplevelse.
 
-WebGift.2 bruges som den opdaterede arbejdsudgave til små forbedringer.
+WebGift.5 bruges som en ny arbejdsudgave til små forbedringer.
